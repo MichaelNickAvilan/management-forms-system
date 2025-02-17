@@ -1,0 +1,127 @@
+@font-face {
+  font-family: "adidas";
+  src: url('fonts/adidasFG-Compressed.eot');
+}
+
+body {
+    font-family: "adidas", Calibri, Tahoma, sans-serif !important;
+}
+th {
+    font-weight: normal !important;
+    background-color: #000000 !important;
+    color: white !important;
+    font-size: 11px !important;
+}
+tr.even {
+    background-color: #f2f2f2 !important;
+}
+tr{
+    font-size: 11px !important;
+}
+table.dataTable.no-footer {
+    border-bottom: 1px solid #f2f2f2 !important;
+}
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: 1px solid #f2f2f2 !important;
+}
+a.paginate_button {
+    background-color: #d2e3ee !important;
+    border-radius: 5px !important;
+}
+.paginate_button.current{
+    color: white !important;
+    background: #000000 !important;
+}
+#regs_table_wrapper{
+    overflow-x:auto;
+}
+.bg-gradient-primary {
+    background: #000000 !important;
+}
+form.user .form-control-user {
+    border-radius: 0 !important;
+    background-color: #fafafa !important;
+}
+.btn-primary {
+    color: #fff !important;
+    background-color: black !important;
+    border-color: black !important;
+}
+.btn-primary:hover {
+    color: #fff !important;
+    background-color: rgb(60, 60, 60) !important;
+    border-color: rgb(60, 60, 60) !important;
+}
+button.btn.btn-light.active {
+    background-color: #e2e2e2 !important;
+    border-color: #e2e2e2 !important;
+}
+div#content {
+    background-color: #f7f7f7 !important;
+}
+.formTitle{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+    padding-bottom: 3px;
+}
+.cke_chrome {
+    margin-left: 15px !important;
+    margin-bottom: 15px !important;
+    width: 97% !important;
+}
+.dt-searchPanes {
+    visibility: hidden !important;
+    height: 0px !important;
+}
+button.dt-paging-button {
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    border-radius: 5px;
+    border-width: 0px;
+    margin: 2px;
+    width: 36px;
+    height: 36px;
+}
+input#dt-search-0 {
+    margin-left: 5px;
+    border-width: 0px;
+    background-color: #e2e2e2;
+    border-radius: 5px;
+}
+select#dt-length-0 {
+    margin-right: 8px;
+    border-radius: 5px;
+}
+.dtsp-searchPanes {
+    background-color: #a8a8a8;
+    padding: 5px;
+    padding-bottom: 21px;
+    border-radius: 12px;
+}
+.dtsp-topRow.dtsp-subRowsContainer.dtsp-bordered {
+    background-color: #cecece;
+}
+button.dtsp-paneButton.dtsp-collapseButton.dtsp-rotated {
+    background-color: black;
+    color: white;
+    border-width: 0px;
+    border-radius: 5px;
+    margin: 5px;
+}
+span.dtsp-caret {
+    background-color: black;
+    border-radius: 5px;
+}
+span.dtsp-caret {
+    color: white;
+}
+button.dtsp-paneButton {
+    background-color: black;
+}
+input.dtsp-paneInputButton.dtsp-search {
+    font-size: 11px !important;
+}

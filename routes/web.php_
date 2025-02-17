@@ -1,0 +1,84 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+Use App\Fields;
+Use App\Registers;
+Use App\Forms;
+Use App\Formats;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return redirect('/login');
+});
+
+Route::get('/documents', function () {
+    $documents = '[
+        { "form":"documents", "id":"37" }
+    ]';
+    $docs  = getRegisters($documents);
+    return compact('docs');
+});
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ProfileController@index')->name('profile');
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::put('/profile', 'ProfileController@update')->name('profile.update');
+Route::resource('jobapply', JobsController::class);
+
+Route::middleware('auth')->group(static function () {
+    Route::resource('companies', CompaniesController::class);
+    Route::resource('systems', SystemsController::class);
+    Route::resource('forms', FormsController::class);
+    Route::resource('formats', FormatsController::class);
+    Route::resource('fields', FieldsController::class);
+    Route::resource('registers', RegistersController::class);
+    Route::resource('values', ValuesController::class);
+    Route::resource('users', UsersController::class);
+    Route::resource('certificados', CertificatesController::class);
+    Route::name('payroll')->get('/payroll', 'CertificatesController@printPayrollCertificate');
+    Route::post('refresh-csrf', function() {
+        return csrf_token();
+    });
+});
+
+Route::get('storage/{folder}/{filename}', function ($folder,$filename)
+{
+    $path = storage_path('app/public/'.$folder.'/' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});
+
+function getRegisters($forms){
+    $forms = json_decode($forms);;
+    foreach($forms as $form){
+        $form->registers = Registers::where('id_form', '=', $form->id)->with('values')->get();
+        foreach($form->registers as $register){
+            foreach($register->values as $value){
+                $value['field'] = Fields::find($value->id_field)->name_field;
+            }
+        }
+    }
+    return $forms;
+}
